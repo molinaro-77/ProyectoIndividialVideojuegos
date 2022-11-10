@@ -1,0 +1,24 @@
+.hidden {
+    display: none;
+}
+
+.nav-bar {
+    display: flex;
+    background-color: grey;
+    justify-content: space-between;
+}
+
+.logo {
+    display: inline;
+    left: 0;
+}
+
+.link-to-create {
+    text-decoration: none;
+}
+Link{
+    text-decoration: none;
+}
+Link:visited{
+    text-decoration: none;
+}

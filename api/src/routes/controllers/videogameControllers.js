@@ -1,13 +1,21 @@
-const { Videogame } = require('../../db');
+const { Videogame, Op } = require('../../db');
 const axios = require('axios');
 const { API_GAMES, API_KEY_AUTH } = require('../../constants/constants');
 require('dotenv').config();
 
-async function getAllVideogames(req, res){
+async function getVideogames(req, res){
     try{
-        const apiGames = await getVideogamesFromApi();
-        const dbGames = await getGamesFromDB();
-        res.status(200).json(apiGames.concat(dbGames));
+        const { name } = req.query;
+        console.log(name);
+        if(name){
+            const searchedApiGames = await searchGamesInApi(name);
+            const searchedDBGames = await searchGamesInDB(name);
+            res.status(200).json(searchedApiGames.concat(searchedDBGames));
+        }else{
+            const apiGames = await getVideogamesFromApi();
+            const dbGames = await getGamesFromDB();
+            return res.status(200).json(apiGames.concat(dbGames));
+        }
     }catch(e){
         res.status(400).json({error : e.message});
     };
@@ -43,10 +51,42 @@ function getVideogameByIDFromDB(id){
         .catch(new Error('Ha ocurrido un error'))
 }
 
-function getVideogamesFromApi(){
-    return axios.get(API_GAMES + API_KEY_AUTH)
+async function getVideogamesFromApi(){
+    return Promise.all(
+        [
+            axios.get(API_GAMES + API_KEY_AUTH + '&page=1'),
+            axios.get(API_GAMES + API_KEY_AUTH + '&page=2'),
+            axios.get(API_GAMES + API_KEY_AUTH + '&page=3'),
+            axios.get(API_GAMES + API_KEY_AUTH + '&page=4'),
+            axios.get(API_GAMES + API_KEY_AUTH + '&page=5')
+                ])
+        .then(([page1, page2, page3, page4, page5]) => {
+            console.log(page1)
+            return [
+                ...page1.data.results,
+                ...page2.data.results,
+                ...page3.data.results,
+                ...page4.data.results,
+                ...page5.data.results,
+                ]
+            })
+        .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
+}
+
+function searchGamesInApi(queryWord){
+    return axios.get(API_GAMES + API_KEY_AUTH + '&search=' + queryWord)
         .then(response => response.data.results)
         .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
+}
+
+function searchGamesInDB(queryWord){
+    return Videogame.findAll({
+        where : {
+            name : {
+                [Op.like]: '%' + queryWord + '%'
+            },
+        }
+    })
 }
 
 function getGamesFromDB(){
@@ -81,7 +121,7 @@ function validUUID(str) {
     return regexExp.test(str);
 }
 module.exports = {
-    getAllVideogames,
+    getVideogames   ,
     getVideogameById,
     postVideogameToDB
 }

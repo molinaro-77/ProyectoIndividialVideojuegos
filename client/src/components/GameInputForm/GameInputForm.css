@@ -1,0 +1,9 @@
+#form-div{
+    width: 300px;
+    margin: auto;
+}
+
+#form-container {
+    display: flex;
+    flex-direction: column;
+}
