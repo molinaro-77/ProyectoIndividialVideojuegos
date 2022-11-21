@@ -7,31 +7,31 @@ import './Nav.css'
 
 function Nav(){
     const location = useLocation();
-    const dispatch = useDispatch();
     const areWeLanding = (location.pathname === "/")
-
-    function handleClick(e) {
-        e.preventDefault()
-        dispatch(actions.getAllGames());
-    }
 
     return(
         <>
-        <span >Componente nav</span>
-        <nav style={{"border-style": "solid", "border-color": "red"}} className={areWeLanding ? "hidden" : "nav-bar"}>
+        <nav className='nav-bar'>
             <span className="logo">
-                <img className="nav-img-logo" src={logo} alt="" style={{ height: 15, width: 15}}/>
-                <Link className="link-to-home" to='/home'>Enigma Entertainment Corp.</Link>
+                <img className="nav-img-logo" src={logo} alt=""/>
+                <span className="company-name">
+                    Enigma <br/>
+                    Entertainment <br/>
+                    Corp.<br/>
+                </span>
             </span>
-            <div>
-                <button onClick={(e)=>handleClick(e)} className="button-home">
-                <Link className="link-to-home" to='/home'>Home</Link>
+            <div className='nav-bar-routes'>
+                <Link className="link" to='/home'>
+                <button id='home-btn' className={areWeLanding ? "hidden" : "nav-btn"}>
+                    Inicio
                 </button>
-                <button className="link-to-create">
-                <Link to='/create'>Agregar juego</Link>
+                </Link>
+                <Link className="link" to='/create'>
+                <button id='create-btn' className={areWeLanding ? "hidden" : "nav-btn"}>
+                    Agregar juego
                 </button>
+                </Link>
             </div>
-            <SearchBar className="search-bar"/>
         </nav>
         </>
     )

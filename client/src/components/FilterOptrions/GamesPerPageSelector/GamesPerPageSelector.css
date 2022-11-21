@@ -1,0 +1,25 @@
+.games-per-page-container {
+    padding: 2px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+.gpp-label {
+    font-weight: 900;
+    font-family: 'Roboto', sans-serif;
+}
+
+#games-per-page-selector {
+    height: 25px;
+    width: 100%;
+    color: white;
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+#games-per-page-selector:focus {
+    outline: none;
+}

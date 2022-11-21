@@ -1,0 +1,13 @@
+.home-container {
+    width: 61.8%;
+    padding: 1%;
+    margin: auto;
+    background-image: linear-gradient( #1b2838, #2a475e );
+}
+
+.home-background {
+    background-image: url('../../images/utils/background-image-horizon.jpg');
+    background-position: top center;
+    background-size: 100%;
+    background-color: red;
+}

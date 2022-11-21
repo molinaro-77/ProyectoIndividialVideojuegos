@@ -1,24 +1,58 @@
-.hidden {
-    display: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
 .nav-bar {
+    height: 94px;
     display: flex;
-    background-color: grey;
+    background-color: black;
     justify-content: space-between;
 }
 
-.logo {
-    display: inline;
-    left: 0;
+.logo{
+    vertical-align: middle;
+    height: inherit;
+    display: flex;
 }
 
-.link-to-create {
+.nav-img-logo{
+    padding: 4%;
+    height: inherit
+}
+
+.company-name {
+    height: inherit;
+    padding: 4%;
+    font-family: 'Play', sans-serif;
+    font-size: 22px;
+    color: white;
+}
+
+.link {
+    color: white;
+    font-size: inherit;
+    text-decoration: none;
+    height: inherit;
+}
+
+.link:visited {
+    color: white;
     text-decoration: none;
 }
-Link{
-    text-decoration: none;
+
+.nav-bar-routes {
+    height: inherit;
 }
-Link:visited{
-    text-decoration: none;
+
+.nav-btn {
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: inherit;
+    width: 25vh;
+}
+
+.nav-btn:hover{
+    background-color: rgba(255, 255, 255, 0.2);
 }

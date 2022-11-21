@@ -1,38 +1,39 @@
 import * as actions from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react'; 
-import Pages from "../CardPage/CardPage";
-import PageSelector from '../PageSelector/PageSelector';
+import { useEffect } from 'react'; 
+import Pages from "../Pages/Pages";
+import FilterOptions from '../FilterOptrions/Options';
+import Loading from '../Loading/Loading';
+import SearchBar from '../SearchBar/SearchBar';
 
+import './HomePage.css'
 
 function HomePage(){
-    const games = useSelector(state => state.games);
-    const [activePage, setActivePage] = useState(1);
-    const [gamesPerPage, setGamesPerPage] = useState(6);
-    const lastGameInPage = activePage * gamesPerPage;
-    const firstGameInPage = lastGameInPage - gamesPerPage;
-    const gamesInPage = games.slice(firstGameInPage, lastGameInPage);
+    const orderType = useSelector(state => state.orderType);
+    const order = useSelector(state => state.order);
+    const isLoading = useSelector(state => state.isLoading);
+
     const dispatch = useDispatch();
 
-    function selectPage(pageNumber) {
-        setActivePage(pageNumber);
-    }
-    
     useEffect(() => {
-        console.log('using effect')
         dispatch(actions.getAllGames());
+        dispatch(actions.getAllGenres());
+        dispatch(actions.getAllPlatforms());
     }, []);
     
     return(
         <>
-        <span>Componente HomePage</span>
-        <div style={{"border-style": "solid", "border-color": "red"}}>
-            <PageSelector 
-                gameQuantity={games.length}
-                selectPage={selectPage}
-                gamesPerPage={gamesPerPage}
-            />
-            <Pages games={gamesInPage}/>
+        <div className='home-background'>
+            <div className='home-container'>
+                {isLoading ? 
+                    <Loading/> : 
+                    <>
+                    <SearchBar/>
+                    <FilterOptions/>
+                    <Pages />
+                    </>
+                }
+            </div>
         </div>
         </>
     )

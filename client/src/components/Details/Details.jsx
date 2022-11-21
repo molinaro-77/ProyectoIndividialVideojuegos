@@ -6,9 +6,11 @@ function Details(props){
     const { id } = props.match.params
     const gameDetail = useSelector(state => state.gameDetail)
     const dispatch = useDispatch();
+
     useEffect(()=>{
         dispatch(actions.getGameDetail(id));
     }, []);
+    
     return(
         <>
         <span>Componente detalles</span>

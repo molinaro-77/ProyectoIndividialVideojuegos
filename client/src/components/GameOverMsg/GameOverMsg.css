@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.game-over-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-over-image{
+    margin: 4%;
+    box-shadow: 0 0 30px 0;
+    height: 50%;
+    width: 50%;
+}
+
+.game-over-text{
+    padding: 4%;
+    width: 50%;
+    color: white;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}

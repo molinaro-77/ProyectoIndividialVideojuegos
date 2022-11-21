@@ -1,21 +1,42 @@
 import React from 'react';
+import * as actions from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import './PageSelector.css'
 
-export default function PageSelector(props){
+export default function PageSelector(){
+    const gameQuantity = useSelector(state => state.filteredGames.length)
+    const gamesPerPage = useSelector(state => state.gamesPerPage);
+    const activePage = useSelector(state => state.activePage);
+    const dispatch = useDispatch();
+
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(props.gameQuantity/props.gamesPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(gameQuantity/gamesPerPage); i++) {
         pageNumbers.push(i);
     }
+    const lastPageNumber = pageNumbers[pageNumbers.length -1];
+
     return (
-        <div>
-            <span>Componente Page Selector</span>
-            <ul>
+            <div className='page-numbers'>
+                <button 
+                    onClick={()=> dispatch(actions.previousPage())} 
+                    className={activePage === 1 ? "hidden" : "page-button"}
+                >
+                        &#x21e6;
+                </button>
                 {pageNumbers.map(pageNumber => {
-                    return <li key={pageNumber} onClick={()=> props.selectPage(pageNumber)}>
+                    return <button 
+                            key={pageNumber} 
+                            onClick={()=> dispatch(actions.selectPage(pageNumber))}
+                            className={activePage === pageNumber ? "active-page" : "page-button"}
+                            >
                         {pageNumber}
-                    </li>
+                    </button>
                 })}
-            </ul>
-        </div>
+                <button 
+                    onClick={()=> dispatch(actions.nextPage())}
+                    className={activePage === lastPageNumber ? "hidden" : "page-button"} 
+                >&#x21e8;</button>
+            </div>
     )
 
 }

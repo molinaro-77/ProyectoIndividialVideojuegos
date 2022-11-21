@@ -8,5 +8,4 @@ router.get('/:idVideogame', controllers.getVideogameById)
 
 router.post('/', controllers.postVideogameToDB);
 
-
 module.exports = router;

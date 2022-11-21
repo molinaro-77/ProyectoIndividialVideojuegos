@@ -1,46 +1,42 @@
 import axios from 'axios';
+import * as controllers from '../../utils';
 export const GET_ALL_GAMES = "GET_ALL_GAMES";
 export const GET_GAME_DETAILS = "GET_GAME_DETAILS";
 export const CREATE_GAME = "CREATE_GAME";
 export const DELETE_GAME = "DELETE_GAME";
 export const GET_GENRES = "GET_GENRES";
 export const SEARCH_GAMES = "SEARCH_GAMES";
-export const FILTER_BY = "FILTER_BY";
-
-// Fijarse que la sintaxis de nuestra Action creator es distinta a lo que venimos haciendo. Esto es
-// debido al uso del middleware "thunk", el cual nos permite trabajar con acciones asincrónicas.
-// Necesitamos hacer uso de este middleware ya que nuestras peticiones al back siempre son asincrónicas,
-// por lo tanto, necesitamos ese "delay" para despachar nuestra action hasta que la data nos llegue.
-// Vas a tener que usar la funcion "dispatch" recibida en la funcion interna para despachar la action que
-// va a llegar a nuestro reducer.
-// Acá pueden ver un poco mejor la explicación y algunos ejemplos: https://github.com/reduxjs/redux-thunk
-//
-// NOTA:
-//      Para obtener la informacion del detalle recorda utilizar la ruta http://localhost:3001/movies/:id
-//      Usar ruta 'http://localhost:3001/movies' para buscar todas las movies en nuestro back.
-
-// Inicializamos id en 6, para que nuestros próximos ID's no se pisen con los existentes.
-// La vas a usar en la funcion createMovie, descomentala cuando te haga falta;
-// let id = 6;
-// Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para crear la movie.
-// Puedes usar spread operator para copiar el objeto payload.
-
-// 🚨 IMPORTANTE SI USAN PROMESAS HAY QUE RETORNARLAS! LOS TESTS PUEDEN FALLAR SI NO LO HACEN 🚨
-
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
+export const FILTER_BY_PLATFORM = "FILTER_BY_PLATFORM";
+export const RESET_FILTERS = "RESET_FILTERS";
+export const ORDER_GAMES = "ORDER_GAMES";
+export const GET_PLATFORMS = "GET_PLATFORMS";
+export const SELECT_PAGE = "SELECT_PAGE";
+export const PREV_PAGE = "PREV_PAGE";
+export const NEXT_PAGE = "NEXT_PAGE";
+export const SET_GAMES_PER_PAGE = "SET_GAMES_PER_PAGE";
+export const SET_ORDER_TYPE = "SET_ORDER_TYPE";
+export const REVERSE_ORDER = "REVERSE_ORDER";
+export const FILTER_BY_OWNER = "FILTER_BY_OWNER";
+export const LOADING = "LOADING";
 
 export const getAllGames = () => dispatch => {
-    console.log('hello im here')
+    dispatch({type : LOADING})
     return axios.get(`http://localhost:3001/videogames`)
         .then(response => response.data)
+        .then(data => controllers.orderGamesByName(data, 'asc'))
         .then(json => {
-            dispatch({
-                type: GET_ALL_GAMES,
-                payload: json
-            })
+            setTimeout(() => {
+                dispatch({
+                    type: GET_ALL_GAMES,
+                    payload: json
+                })
+            }, 1000)
         })
 };
 
 export const getGameDetail = (id) => dispatch => {
+    dispatch({type : LOADING})
     return axios.get(`http://localhost:3001/videogames/${id}`)
         .then(response => response.data)
         .then(json => {
@@ -62,28 +58,117 @@ export const getAllGenres = () => dispatch => {
         })
 };
 
-export const searchGame = (queryWord) => dispatch => {
-    return axios.get(`http://localhost:3001/videogames?name=${queryWord}`)
-        .then(response => response.data)
+export const getAllPlatforms = () => dispatch => {
+    return axios.get('http://localhost:3001/platforms')
+        .then(response => response.data.results)
         .then(json => {
-            console.log(json);
             dispatch({
-                type : SEARCH_GAMES,
+                type : GET_PLATFORMS,
                 payload : json
             })
         })
 };
 
-export const createGame = (payload) => {
+export const searchGame = (queryWord) => dispatch => {
+    dispatch({type : LOADING})
+    return axios.get(`http://localhost:3001/videogames?name=${queryWord}`)
+        .then(response => controllers.orderGamesByName(response.data, 'asc'))
+        .then(json => {
+            setTimeout(() => {
+            dispatch({
+                type : SEARCH_GAMES,
+                payload : json
+            })
+        }, 1000)
+        })
+};
+
+export const createGame = (payload) => dispatch => { 
     return axios.post(`http://localhost:3001/videogames`, payload)
-        .then(response => response.json())
-        .then(json => console.log(json))
-        .catch(err => console.log(err))
+        .then(response => response.data)
+        .then(json => {
+            dispatch({
+                type : CREATE_GAME,
+                payload : json
+            })
+        })
+        .catch(err => console.log(err.response))
 };
 
-export const filterBy = () => {
-
+export const filterByGenre = (genre) => {
+    return {
+        type : FILTER_BY_GENRE,
+        payload : genre,
+    }
 };
+
+export const filterByPlatform = (platform) => { 
+    return { 
+        type : FILTER_BY_PLATFORM,
+        payload : platform
+    }
+};
+
+export const filterByOwner = (owner) => {
+    return {
+        type : FILTER_BY_OWNER,
+        payload : owner
+    }
+}
+
+export const resetFilters = () => {
+    return {
+        type : RESET_FILTERS,
+        payload : []
+    }
+}
+
+export const orderGames = () => {
+    console.warn('orderGames')
+    return {
+        type : ORDER_GAMES,
+    }
+}
+
+export const reverseOrder = (currentOrder) => {
+    return {
+        type : REVERSE_ORDER,
+        payload : currentOrder
+    }
+}
+
+export const setOrderType = (payload) => {
+    return {
+        type : SET_ORDER_TYPE,
+        payload: payload
+    }
+}
+
+export const selectPage = (pageNumber) => {
+    return {
+        type : SELECT_PAGE,
+        payload : pageNumber
+    }
+}
+
+export const previousPage = () => {
+    return {
+        type : PREV_PAGE,
+    }
+}
+
+export const nextPage = () => {
+    return {
+        type : NEXT_PAGE,
+    }
+}
+
+export const setGamesPerPage = (gamesPerPage) => {
+    return {
+        type : SET_GAMES_PER_PAGE,
+        payload : gamesPerPage,
+    }
+}
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la movie que queremos eliminar.
 // export const deleteGame = (id) => {
@@ -92,5 +177,3 @@ export const filterBy = () => {
 //         payload : id
 //     }
 // };
-
-// Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para enviar el form de contacto.

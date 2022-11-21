@@ -3,6 +3,7 @@ const express = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const videogame = require('./middlewares/videogames.js')
 const genres = require('./middlewares/genres.js')
+const platforms = require('./middlewares/platforms.js')
 
 const router = express.Router();
 router.use(express.json());
@@ -10,5 +11,6 @@ router.use(express.json());
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/videogames', videogame);
 router.use('/genres', genres);
+router.use('/platforms', platforms);
 
 module.exports = router;

@@ -1,0 +1,32 @@
+.active-page {
+    border-radius: 15px;
+    border: none;
+    background-color: red;
+    color: black;
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+}
+
+.page-numbers{
+    margin: 1%;
+    text-align: center;
+    margin: auto;
+    padding: 1%;
+}
+
+.page-button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    border-radius: 15px;
+    border: none;
+    background-color: black;
+    color: white;
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+}
+
+.page-button:hover {
+    background-color: rgb(255, 255, 255, 0.2);
+}

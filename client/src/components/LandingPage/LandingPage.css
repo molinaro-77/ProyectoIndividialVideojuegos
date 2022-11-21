@@ -1,0 +1,52 @@
+.background-video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.butterfly_message{
+    height: 77px;
+    width: 305px;
+    margin-left: 20px;
+}
+
+.start-img{
+    height: 77px;
+    width: 159px;
+}
+
+#start-btn {
+    padding: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px 0;
+    border-radius: 45px;
+    border: none;
+    position: fixed;
+    z-index: 10;
+    top: 61.8%;
+    height: 90px;
+    bottom : 38.2%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    width: auto;
+    max-width: 165px; /** I'm animating max-width because width needs to be auto, and auto can't be animated **/
+    -webkit-transition: max-width 0.5s;
+    transition: max-width 0.5s;
+}
+
+#start-btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px 0;
+    max-width: 514px; 
+}

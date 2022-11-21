@@ -1,6 +1,7 @@
-const { Videogame, Op } = require('../../db');
+const { Videogame, Genre, Videogame_Genre, Op } = require('../../db');
 const axios = require('axios');
 const { API_GAMES, API_KEY_AUTH } = require('../../constants/constants');
+const helpers = require('../../helpers'); 
 require('dotenv').config();
 
 async function getVideogames(req, res){
@@ -14,6 +15,7 @@ async function getVideogames(req, res){
         }else{
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
+            console.log(dbGames)
             return res.status(200).json(apiGames.concat(dbGames));
         }
     }catch(e){
@@ -26,11 +28,10 @@ async function getVideogameById(req, res) {
         const {idVideogame} = req.params;
         let videogame;
         console.log(typeof idVideogame)
-        if(validUUID(idVideogame)){
+        if(helpers.validUUID(idVideogame)){
             videogame = await getVideogameByIDFromDB(idVideogame);
         }else{
             videogame = await getVideogamesByIdFromApi(idVideogame)
-            console.log('but not here')
         }
         console.log(videogame);
         res.status(200).json(videogame);
@@ -46,7 +47,12 @@ function getVideogamesByIdFromApi(id){
 } 
 
 function getVideogameByIDFromDB(id){
-    return Videogame.findByPk(id)
+    return Videogame.findByPk(id, {
+        include : 
+        [{
+            model : Genre,
+            as : 'genres'
+    }]})
         .then(response => response)
         .catch(new Error('Ha ocurrido un error'))
 }
@@ -61,7 +67,6 @@ async function getVideogamesFromApi(){
             axios.get(API_GAMES + API_KEY_AUTH + '&page=5')
                 ])
         .then(([page1, page2, page3, page4, page5]) => {
-            console.log(page1)
             return [
                 ...page1.data.results,
                 ...page2.data.results,
@@ -90,38 +95,58 @@ function searchGamesInDB(queryWord){
 }
 
 function getGamesFromDB(){
-    return Videogame.findAll()
+    return Videogame.findAll({
+        include : [{
+            model : Genre,
+            as : 'genres'
+        }]
+    })
         .then(response => response)
         .catch(new Error('Algo salio mal buscando en la base de datos'));
 }
 
 async function postVideogameToDB(req, res) {
     try {
-        const {name, description, releaseDate, rating, platforms} = req.body;
+        const {name, description, releaseDate, rating, platforms, genres} = req.body;
         if(!name || !description || !platforms ){
             return res.status(400).send("Faltan parametros")
         }else{
             const createdVideogame = await Videogame.create({
-                name,
-                description,
-                releaseDate,
-                rating,
-                platforms
+                name : name,
+                description : description,
+                releaseDate : releaseDate,
+                rating : rating,
+                platforms : platforms
             });
-            console.log(createdVideogame.toJSON());
-            res.status(201).json(createdVideogame)
+            for (const genre of genres) {
+                let genreInDB = await Genre.findOne({
+                    where : {
+                        id : genre.id,
+                    }
+                })
+                console.log(genreInDB)
+                await createdVideogame.addGenre(genreInDB)
+            }
+            const result = await Videogame.findOne({
+                where : {
+                    name : name,
+                },
+                include : [{
+                    model : Genre,
+                    as : 'genres'
+                }]
+            })
+            console.log(result)
+            res.status(201).json(result)
         }
     } catch (error) {
+        console.log(error)
         return res.status(400).json({error: error.message});
     }
     }
 
-function validUUID(str) {
-    const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-    return regexExp.test(str);
-}
 module.exports = {
-    getVideogames   ,
+    getVideogames,
     getVideogameById,
-    postVideogameToDB
+    postVideogameToDB,
 }

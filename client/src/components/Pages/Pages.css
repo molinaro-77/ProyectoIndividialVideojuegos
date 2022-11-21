@@ -1,0 +1,5 @@
+.carousel {
+    justify-content: space-around;
+    display: flex; 
+    flex-wrap: wrap;
+}
