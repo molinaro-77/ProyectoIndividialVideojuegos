@@ -1,0 +1,124 @@
+.image-container {
+    height: 125vh;
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+.details-container {
+    position: relative;
+    background-color: rgba(0,0,0,0);
+}
+
+.game-detail-img {
+    object-fit: cover;
+    height: 125vh;
+    z-index: -10;
+    overflow: hidden;
+}
+
+.details-data{
+    position: absolute;
+    top: 30.9%;
+    margin-left: 10%;
+    width: 61.8%;
+    z-index: 10;
+    color: white;
+    font-size: large;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+}
+
+.game-detail-title {
+    font-size: 6.18vh;
+}
+
+h3 {
+    text-decoration: double; 
+}
+
+.genre-list {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.details-genre {
+    margin-right: 0.5vw;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    height: 2vh;
+    font-size: 90%;
+    font-weight: 400;
+    border-radius: 10px;        
+}
+
+.game-info {
+    height: 3vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+}
+
+.game-detail-release-date {
+    font-weight: 900;
+}
+
+.game-detail-ratings {
+    display: flex;
+    position: absolute;
+    justify-content: space-evenly;
+    right: 10%;
+    flex-direction: row;
+}
+
+.rating {
+    margin-left: 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    font-weight: 400;
+    background-color: black;
+    height: 3vh;
+    border-radius: 15%/50%; 
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.rating-number {
+    align-items: center;
+    vertical-align: middle;
+}
+
+.rating-logo{
+    position: relative;
+    top: 0%;
+    padding-bottom: 1%;
+    align-items: center;
+    height: 20px;
+    width: 20px;
+    margin-right: 10%;
+} 
+
+.platform-list {
+    margin-top: 1%;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    flex-direction: row;
+}
+
+.game-detail-platform-name {
+    margin-right: 0.5vw;
+    background-color: rgb(146, 0, 0);
+    border-radius: 11px;
+    color: white;
+    padding-left: 2%;
+    padding-right: 2%;
+}

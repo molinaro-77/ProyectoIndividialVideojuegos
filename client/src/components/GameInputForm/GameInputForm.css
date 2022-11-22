@@ -1,13 +1,124 @@
-#form-div{
-    width: 300px;
-    margin: auto;
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+
+.form-div{
+    position: relative;
+    height: 125vh;
+    background-color: rgba(0,0,0,0);
 }
 
-#form-container {
+.background-image-container {
+    background-image: linear-gradient(
+        rgba(0,0,0,0), rgba(0,0,0,1)
+        ), 
+        url('../../images/utils/background_image.jpg');
+    background-size: cover;
+    background-position: top center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: 1px;
+    overflow: hidden;
+}
+
+.form-container{
+    position: absolute;
+    padding: 2%;
+    top: 10vh;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 30.9vw;
+    box-shadow: 0 0 5px 5px inset rgba(111,91,70,255);
+    background-image: linear-gradient(
+        rgba(86,60,42,0.7), rgba(86,60,42,0.7)
+            ),
+            url('../../images/utils/wood_texture.jpg');
+    background-color: rgba(86,60,42,255);
+}
+
+.add-game-form-label {
+    text-align: center;
+    font-family: 'Norse';
+    font-weight: bold;
+    color: rgba(249,170,0,255);
+    font-size: 3vh;
+    padding: 2%;
+}
+
+.form-value-input{
+    background-color: rgba(73,73,73,255);
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    border: 2px solid rgba(51,51,51,255);
+    color: rgba(241,241,241,255);
+    resize: none;
+    font-size: 2vh;
+    text-align: center;
+    background-color: rgba(73,73,73,255);   
+    box-shadow: 0 0 5px 5px inset rgba(36,36,36,255);
+}
+
+.single-input-container{
     display: flex;
     flex-direction: column;
 }
 
-.hidden {
-    display: none;
+.form-value-date-input{
+    border: 2px solid rgba(51,51,51,255);
+    background-color: rgba(73,73,73,255);
+    color: rgba(241,241,241,255);
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 2vh;
+    text-align: center;
+    background-color: rgba(73,73,73,255);   
+    box-shadow: 0 0 5px 5px inset rgba(36,36,36,255);
 }
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.form-value-select {
+    border: 2px solid rgba(51,51,51,255);
+    background-color: rgba(73,73,73,255);
+    color: rgba(241,241,241,255);
+    font-family: 'PT Serif', serif;
+    font-weight: 700;
+    font-size: 2vh;
+    text-align: center;
+    background-color: rgba(73,73,73,255);   
+    box-shadow: 0 0 5px 5px inset rgba(36,36,36,255);
+}
+
+.form-submit-btn {
+    position: relative;
+    margin-top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 161.8px;
+    height: 50px;
+    border: 1px solid rgba(149,98,32,255);
+    font-family: 'Norse';
+    font-weight: 700;
+    font-size: large;
+    background-color: rgba(73,73,73,255);   
+    box-shadow: 0 0 5px 10px inset rgba(33,33,33,255);
+    color: rgba(249,170,0,255);
+}
+
+
+.form-submit-btn:disabled,
+.form-submit-btn[disabled]{
+    border: none;
+    color: rgba(169,169,169,255)
+}
+.form-submit-btn-container{
+    align-items: center;
+}
+
+
+

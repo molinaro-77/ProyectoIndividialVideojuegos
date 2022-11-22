@@ -1,7 +1,4 @@
-import * as actions from '../../redux/actions'
-import SearchBar from "../SearchBar/SearchBar";
-import { Link , useLocation} from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { Link , useLocation } from "react-router-dom";
 import logo from "../../images/logo.png";
 import './Nav.css'
 
@@ -23,12 +20,12 @@ function Nav(){
             <div className='nav-bar-routes'>
                 <Link className="link" to='/home'>
                 <button id='home-btn' className={areWeLanding ? "hidden" : "nav-btn"}>
-                    Inicio
+                    Home
                 </button>
                 </Link>
                 <Link className="link" to='/create'>
                 <button id='create-btn' className={areWeLanding ? "hidden" : "nav-btn"}>
-                    Agregar juego
+                    Add game
                 </button>
                 </Link>
             </div>

@@ -8,23 +8,27 @@ export default function StarRating({rating, setRating}) {
     const stars = new Array(5);
     stars.fill(star_logo)
     return (
-    <div className="star-rating">
-        <label htmlFor="rating">Rating: </label>
+    <div className="single-input-container">
+        <label
+            className='add-game-form-label'
+            htmlFor="rating">Rating: </label>
+
+        <div className='star-rating'>
         {stars.map((star, index) => {
-        index += 1;
-        return (
-            <button
-            id="star-rating-star"
-            type="button"
-            key={index}
-            onClick={() => setRating({
-                ...rating,
-                value : index,
-                valid : true
-            })}
-            onMouseEnter={() => setHover(index)}
-            onMouseLeave={() => setHover(rating.value)}
-            >
+            index += 1;
+            return (
+                <button
+                id="star-rating-star"
+                type="button"
+                key={index}
+                onClick={() => setRating({
+                    ...rating,
+                    value : index,
+                    valid : true
+                })}
+                onMouseEnter={() => setHover(index)}
+                onMouseLeave={() => setHover(rating.value)}
+                >
             <span className="star">
                 <img 
                     id="img-btn"
@@ -35,6 +39,7 @@ export default function StarRating({rating, setRating}) {
             </button>
         );
         })}
+        </div>
     </div>
     );
 };

@@ -1,4 +1,4 @@
-import ErrorMessage from "../ErrrorMessage/ErrorMessage"
+import ErrorMessage from "../ErrorMessage/ErrorMessage"
 
 export default function InputTitle ({title, setTitle, validCharacters}){
 
@@ -9,9 +9,10 @@ export default function InputTitle ({title, setTitle, validCharacters}){
     }
 
     return (
-        <>
-        <label htmlFor="nombre">Título: </label>
+        <div className="single-input-container">
+        <label className='add-game-form-label' htmlFor="nombre">Title: </label>
             <input
+                className="form-value-input"
                 type="text"
                 value={title.value}
                 onChange={(e)=>setTitle({...title, value : e.target.value})}
@@ -20,8 +21,8 @@ export default function InputTitle ({title, setTitle, validCharacters}){
                 />
             <ErrorMessage
                 className={title.valid ? "hidden" : "errorMessage"}
-                message={"Es necesario ingresar un título"}
+                message={"Title is invalid!"}
             />
-        </>
+        </div>
     )
 }

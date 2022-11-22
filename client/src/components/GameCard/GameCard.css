@@ -37,18 +37,23 @@
     font-size: 20px;
     font-weight: 900;
     margin: 0;
+    width: 61.8%;
 }
+
 .genres-container{
     display: flex;
+    width: 61.8%;
     flex-direction: row;
     font-size: small;
+    flex-wrap: wrap;
+
 }
 .genre {
     padding-top: 3px;
     padding-right: 6px;
 }
 
-.rating {
+.game-card-rating {
     margin-left: auto;
     padding: 2%;
     margin-top: 2%;
@@ -66,25 +71,17 @@
     z-index: 40;
 }
 
-.game-card-image{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    vertical-align: middle;
-    max-width: 125%;
-    max-height: 125%;
-    z-index: 20;
-}
-
-.game-card-image-shadow{
-    background-color: red;
-    position: absolute;
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    box-shadow: inset 3px 3px 10px 0 #ff0000;
-    border-radius: 20px;
-    top: 0;
-    left: 0;
+}
+
+.game-card-image{
+    object-fit: contain;
+    max-height: 125%;
+    max-width: 125%;
 }
 

@@ -1,7 +1,5 @@
 // Importa las action types acá
-import axios from 'axios';
 import * as controllers from '../../utils'
-import { useDispatch } from 'react-redux';
 import { 
   CREATE_GAME, 
   DELETE_GAME, 

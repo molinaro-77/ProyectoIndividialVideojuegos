@@ -10,13 +10,11 @@ function GameCard(props){
             <Link
                 className='link'
                 to={`/details/${props.id}`}>
+                <div className='image-container'>
                 <img
                     className='game-card-image'
                     src={props.image} 
                     alt="" />
-                <div
-                    className='game-card-image-shadow'
-                >
                 </div>
                 <div className='black-background'>
                     <div className='data-container'>
@@ -34,7 +32,7 @@ function GameCard(props){
                             })}
                         </div>
                         <div
-                            className='rating'
+                            className='game-card-rating'
                             >
                             &#x2B50;
                             {props.rating}

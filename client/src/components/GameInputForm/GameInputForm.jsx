@@ -1,4 +1,3 @@
-import './GameInputForm.css';
 import { useEffect , useState } from 'react';
 import { useDispatch} from 'react-redux';
 import StarRating from './StarRating/StarReting';
@@ -8,7 +7,9 @@ import * as actions from '../../redux/actions';
 import PlatformSelector from './PlatformSelector/PlatformSelector';
 import GenreSelector from './GenreSelector/GenreSelector';
 import InputDescription from './InputDescription/InputDescription';
-import ErrorMessage from './ErrrorMessage/ErrorMessage';
+import form_background from '../../images/utils/background_image.jpg'
+
+import './GameInputForm.css';
 
 function GameInputForm(){
     const validCharacters = /[^A-Za-z0-9 ]/
@@ -55,8 +56,10 @@ function GameInputForm(){
 
     return(
         <>
-        <div style={{"border-style": "solid", "border-color": "red"}} id='form-div'>
-        <form id="form-container" action="" onSubmit={(e)=>{handleSubmit(e)}}>
+        <div className='form-div'>
+            <div className='background-image-container'>
+            </div>
+            <form className="form-container" onSubmit={(e)=>{handleSubmit(e)}}>
             <InputTitle
                 validCharacters={validCharacters}
                 title={title}
@@ -82,13 +85,16 @@ function GameInputForm(){
                 description={description}
                 setDescription={setDescription}
                 />
+        <div className='form-submit-btn-container'>
         <input 
+            className='form-submit-btn'
             type="submit" 
             disabled={
                 requiredValuesAreEmpty ||
                 someValuesAreNotValid
             } 
             value="Agregar juego" />
+        </div>
         <div
             className={requiredValuesAreEmpty || someValuesAreNotValid ? "errorMessage" : "hidden"}
             >

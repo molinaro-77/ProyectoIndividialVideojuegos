@@ -5,6 +5,9 @@
     cursor: pointer;
 }
 
+.star-rating {
+    margin: auto;
+}
 #img-btn {
     height: 30px;
     width: 30px;
@@ -14,6 +17,7 @@
     -webkit-filter: grayscale(0);
     filter: none;
 }
+
 .img-btn-off {
     filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */

@@ -20,9 +20,12 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
         }
 
     return (
-        <>
-        <label htmlFor="genres">Generos: </label>
+        <div className="single-input-container">
+        <label 
+            className='add-game-form-label'
+            htmlFor="genres">Generos: </label>
             <select 
+                className="form-value-select" 
                 onChange={(e)=> chooseGenre(e)}
                 name="genres" id="">
                 {genres.map(genre => {
@@ -38,6 +41,6 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
                 onClick={(e)=>removeFromChosenGenres(e.target.innerText)}>{genre.name}</div>
             })}
         </div>
-        </>
+        </div>
     )
 }

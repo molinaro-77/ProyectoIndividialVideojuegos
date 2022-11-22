@@ -1,9 +1,10 @@
 export default function InputReleaseDate({releaseDate, setReleaseDate}){
     
     return (
-        <>
-        <label htmlFor="fecha">Fecha de estreno: </label>
-            <input 
+        <div className="single-input-container">
+        <label className='add-game-form-label' htmlFor="fecha">RELEASE DATE:</label>
+            <input
+                className="form-value-date-input"
                 name="fecha"
                 type="date"
                 value={releaseDate.value}
@@ -15,6 +16,6 @@ export default function InputReleaseDate({releaseDate, setReleaseDate}){
                     valid : true
                 });
             }}/>
-        </>
+        </div>
     )
 }
