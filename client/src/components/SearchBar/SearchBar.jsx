@@ -1,6 +1,5 @@
 import * as actions from '../../redux/actions'
 import { useState } from 'react';
-import { useLocation} from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import search_icon from '../../images/utils/search_icon.png'
 import './SearchBar.css'
@@ -8,7 +7,6 @@ import './SearchBar.css'
 function SearchBar(){
     const [searchQuery, setSearchQuery] = useState("");
     const dispatch = useDispatch();
-    const location = useLocation();
 
     function search(e){
         e.preventDefault();

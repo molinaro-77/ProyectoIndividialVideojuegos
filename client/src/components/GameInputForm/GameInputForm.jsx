@@ -37,6 +37,7 @@ function GameInputForm(){
     useEffect(() =>{
         dispatch(actions.getAllGenres());
         dispatch(actions.getAllPlatforms());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmit = (e) => {

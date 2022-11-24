@@ -9,7 +9,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import './HomePage.css'
 
 function HomePage(){
+    // eslint-disable-next-line
     const orderType = useSelector(state => state.orderType);
+    // eslint-disable-next-line
     const order = useSelector(state => state.order);
     const isLoading = useSelector(state => state.isLoading);
 
@@ -19,6 +21,7 @@ function HomePage(){
         dispatch(actions.getAllGames());
         dispatch(actions.getAllGenres());
         dispatch(actions.getAllPlatforms());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     return(
