@@ -39,16 +39,17 @@ export default function PlatformSelector({chosenPlatforms, setChosenPlatforms}){
                         >{platform.name}</option>
                     })}
                 </select>
-            <div >
+            <div className="selected-items-container">
                 {chosenPlatforms.value.map(platform => {
-                    return <div 
+                    return <div
+                    className="selected-item"
                     onClick={(e)=>removeFromChosenPlatforms(e.target.innerText)}
                     >{platform}</div>
                 })}
             </div>
             <ErrorMessage
                 className={chosenPlatforms.value.length > 0 ? "hidden" : "errorMessage"}
-                message={"Debe seleccionar al menos una plataforma"}
+                message={"Warrior! Every game must have a platform, just like every tribute belongs to an altar."}
                 />
         </div>
     )

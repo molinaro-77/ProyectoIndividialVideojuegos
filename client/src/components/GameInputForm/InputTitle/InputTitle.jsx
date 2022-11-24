@@ -21,7 +21,7 @@ export default function InputTitle ({title, setTitle, validCharacters}){
                 />
             <ErrorMessage
                 className={title.valid ? "hidden" : "errorMessage"}
-                message={"Title is invalid!"}
+                message={"Please! Do not anger the gods... Give your game a proper title."}
             />
         </div>
     )

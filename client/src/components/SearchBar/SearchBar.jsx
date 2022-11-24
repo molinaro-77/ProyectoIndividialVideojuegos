@@ -9,8 +9,6 @@ function SearchBar(){
     const [searchQuery, setSearchQuery] = useState("");
     const dispatch = useDispatch();
     const location = useLocation();
-    const areWeInForm = (location.pathname === "/create")
-    const areWeLanding = (location.pathname === "/")
 
     function search(e){
         e.preventDefault();

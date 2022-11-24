@@ -18,7 +18,12 @@ export default function Options(){
             <button
                 className='option-btn'
                 onClick={()=>{dispatch(actions.resetFilters())}}
-                >Reiniciar Filtros
+                >Reset Filters
+            </button>
+            <button
+                className='option-btn'
+                onClick={()=>{dispatch(actions.getAllGames())}}
+                >Show default games.
             </button>
             </div>
         </>

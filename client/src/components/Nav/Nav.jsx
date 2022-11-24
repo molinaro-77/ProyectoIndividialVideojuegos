@@ -25,7 +25,7 @@ function Nav(){
                 </Link>
                 <Link className="link" to='/create'>
                 <button id='create-btn' className={areWeLanding ? "hidden" : "nav-btn"}>
-                    Add game
+                    Craft a game
                 </button>
                 </Link>
             </div>

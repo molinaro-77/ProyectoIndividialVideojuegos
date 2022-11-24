@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 export default function GenreSelector({chosenGenres, setChosenGenres}) {
     const genres = useSelector(state => state.genres)
@@ -35,9 +34,10 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
                     >{genre.name}</option>
                 })}
             </select>
-        <div>
+        <div className="selected-items-container">
             {chosenGenres.value.map(genre => {
                 return <div
+                    className="selected-tiem"
                 onClick={(e)=>removeFromChosenGenres(e.target.innerText)}>{genre.name}</div>
             })}
         </div>

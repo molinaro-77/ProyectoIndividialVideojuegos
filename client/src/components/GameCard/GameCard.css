@@ -17,7 +17,7 @@
     transform: scale(1.1); 
 }
 
-.black-background{
+.game-card-black-background{
     height: 200%;
     width: 100%;
     z-index: 30;
@@ -29,7 +29,7 @@
     background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))
 }
 
-.black-background:hover{
+.game-card-black-background:hover{
     bottom: 0;
 }
 
@@ -71,7 +71,7 @@
     z-index: 40;
 }
 
-.image-container{
+.game-card-image-container{
     display: flex;
     justify-content: center;
     align-items: center;

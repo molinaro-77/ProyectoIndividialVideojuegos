@@ -7,9 +7,9 @@ import * as actions from '../../redux/actions';
 import PlatformSelector from './PlatformSelector/PlatformSelector';
 import GenreSelector from './GenreSelector/GenreSelector';
 import InputDescription from './InputDescription/InputDescription';
-import form_background from '../../images/utils/background_image.jpg'
 
 import './GameInputForm.css';
+import ErrorMessage from './ErrorMessage/ErrorMessage';
 
 function GameInputForm(){
     const validCharacters = /[^A-Za-z0-9 ]/
@@ -95,16 +95,10 @@ function GameInputForm(){
             } 
             value="Agregar juego" />
         </div>
-        <div
+        <ErrorMessage
             className={requiredValuesAreEmpty || someValuesAreNotValid ? "errorMessage" : "hidden"}
-            >
-                <p>
-                "Don't press that button. You don't know what you're doing." 
-                </p>
-                <h6>
-                    -GlaDOS
-                </h6>
-            </div>
+            message={"You wont be able to craft the game unless you have the right materials"}
+            />
         </form>
         </div>
         </>

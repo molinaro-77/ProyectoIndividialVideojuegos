@@ -1,8 +1,9 @@
-import './GameCard.css';
 import { Link } from 'react-router-dom';
 
+import './GameCard.css';
 
 function GameCard(props){
+    
     return(
         <div
             className='card-container' 
@@ -10,13 +11,14 @@ function GameCard(props){
             <Link
                 className='link'
                 to={`/details/${props.id}`}>
-                <div className='image-container'>
+                <div className='game-card-image-container'>
                 <img
                     className='game-card-image'
                     src={props.image} 
+                    loading="lazy"
                     alt="" />
                 </div>
-                <div className='black-background'>
+                <div className='game-card-black-background'>
                     <div className='data-container'>
                         <div
                             className='game-card-title'

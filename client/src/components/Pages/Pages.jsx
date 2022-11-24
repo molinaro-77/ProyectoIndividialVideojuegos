@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import GameCard from "../GameCard/GameCard";
-import GameCards from "../GameCards/GameCards";
 import GameOverMsg from '../GameOverMsg/GameOverMsg';
 import PageSelector from '../PageSelector/PageSelector';
+
+import defaultImage from '../../images/utils/default_image_3.jpg';
 
 import './Pages.css';
 
@@ -19,7 +20,7 @@ function Pages(){
         key={game.id}
         id={game.id}
         name={game.name}
-        image={game.background_image}
+        image={game.background_image ? game.background_image : defaultImage}
         rating={game.rating}
         genres={game.genres}
         />      
