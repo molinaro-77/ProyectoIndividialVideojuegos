@@ -37,7 +37,7 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
         <div className="selected-items-container">
             {chosenGenres.value.map(genre => {
                 return <div
-                    className="selected-tiem"
+                    className="selected-item"
                 onClick={(e)=>removeFromChosenGenres(e.target.innerText)}>{genre.name}</div>
             })}
         </div>
