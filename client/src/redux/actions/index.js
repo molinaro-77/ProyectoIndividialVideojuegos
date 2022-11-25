@@ -22,7 +22,7 @@ export const LOADING = "LOADING";
 
 export const getAllGames = () => dispatch => {
     dispatch({type : LOADING})
-    return axios.get(`http://localhost:3001/videogames`)
+    return axios.get(`/videogames`)
         .then(response => response.data)
         .then(data => controllers.orderGamesByName(data, 'asc'))
         .then(json => {
@@ -37,7 +37,7 @@ export const getAllGames = () => dispatch => {
 
 export const getGameDetail = (id) => dispatch => {
     dispatch({type : LOADING})
-    return axios.get(`http://localhost:3001/videogames/${id}`)
+    return axios.get(`/videogames/${id}`)
         .then(response => response.data)
         .then(json => {
             dispatch({
@@ -48,7 +48,7 @@ export const getGameDetail = (id) => dispatch => {
 };
 
 export const getAllGenres = () => dispatch => {
-    return axios.get(`http://localhost:3001/genres`)
+    return axios.get(`/genres`)
         .then(response => response.data)
         .then(json => {
             dispatch({
@@ -59,7 +59,7 @@ export const getAllGenres = () => dispatch => {
 };
 
 export const getAllPlatforms = () => dispatch => {
-    return axios.get('http://localhost:3001/platforms')
+    return axios.get('/platforms')
         .then(response => response.data.results)
         .then(json => {
             dispatch({
@@ -71,7 +71,7 @@ export const getAllPlatforms = () => dispatch => {
 
 export const searchGame = (queryWord) => dispatch => {
     dispatch({type : LOADING})
-    return axios.get(`http://localhost:3001/videogames?name=${queryWord}`)
+    return axios.get(`/videogames?name=${queryWord}`)
         .then(response => controllers.orderGamesByName(response.data, 'asc'))
         .then(json => {
             setTimeout(() => {
@@ -84,7 +84,7 @@ export const searchGame = (queryWord) => dispatch => {
 };
 
 export const createGame = (payload) => dispatch => { 
-    return axios.post(`http://localhost:3001/videogames`, payload)
+    return axios.post(`/videogames`, payload)
         .then(response => response.data)
         .then(json => {
             dispatch({
