@@ -68,27 +68,27 @@ export function filterGamesByGenreOR(gamesArray, selectedGenreArray){
     })
 }
 
+/* if(isNaN(game.id)){
+    return selectedPlatformArray.every((selectedPlatform)=>{
+        return game.platforms.find((name)=>{
+            return selectedPlatform.includes(name);
+        })
+    })
+}else{ */
 
 //Filtro AND
 export function filterGamesByPlatformAND(gamesArray, selectedPlatformArray){
-    console.log('gamesArray', gamesArray)
     return gamesArray.filter((game) => {
         if(game.platforms === null) return false;
-        if(isNaN(game.id)){
-            return selectedPlatformArray.every((selectedPlatform)=>{
-                return game.platforms.find((name)=>{
-                    return selectedPlatform.includes(name);
-                })
-            })
-        }else{
-            return selectedPlatformArray.every((selectedPlatform)=>{
-                return game.platforms.find(({platform})=>{
-                    return selectedPlatform.includes(platform.name);
+        return selectedPlatformArray.every((selectedPlatform)=>{
+            return game.platforms.find(({platform})=>{
+                return selectedPlatform.includes(platform.name);
                 })
             })
         }
-    })
+    )
 }
+
 //Filtro OR
 export function filterGamesByPlatformOR(gamesArray, selectedPlatformArray){
     return gamesArray.filter(({platforms}) => {

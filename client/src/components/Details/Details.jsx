@@ -17,15 +17,7 @@ function Details(props){
     const isLoading = useSelector(state => state.isLoading)
     const dispatch = useDispatch();
 
-    console.log(isNaN(gameDetail.id))
-
-    const platforms = isNaN(gameDetail.id) ? gameDetail.platforms?.map((platform) => {
-        console.log(platform.name);
-        return  <div
-            className='game-detail-platform-name'>
-            {platform}
-        </div>
-    }) : gameDetail.platforms?.map(({platform}) => {
+    const platforms = gameDetail.platforms?.map(({platform}) => {
         console.log(platform)
         return  <div
             className='game-detail-platform-name'>

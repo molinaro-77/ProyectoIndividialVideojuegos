@@ -7,7 +7,11 @@ export default function PlatformSelector({chosenPlatforms, setChosenPlatforms}){
     const choosePlatform = (e) => {
         if(!chosenPlatforms.value.includes(e.target.value)){
             setChosenPlatforms({...chosenPlatforms,
-                value : [...chosenPlatforms.value, e.target.value],
+                value : [...chosenPlatforms.value, 
+                    {platform : {
+                        name : e.target.value
+                    }}
+                ],
             })
         }
     }
@@ -17,7 +21,7 @@ export default function PlatformSelector({chosenPlatforms, setChosenPlatforms}){
                 ...chosenPlatforms, 
                 value : [
                     ...chosenPlatforms.value.filter(
-                        platform => platform !== target
+                        ({platform}) => platform.name !== target
                     )],
                 })
     }
@@ -32,19 +36,21 @@ export default function PlatformSelector({chosenPlatforms, setChosenPlatforms}){
                     className="form-value-select"
                     onChange={(e)=>choosePlatform(e)}
                     name="platforms" id="">
-                    {platforms.map(platform => {
+                    {platforms.map(({platform}) => {
                         return <option
+                        key={platform.id}
                         id={platform.id}
                         value={platform.name}
                         >{platform.name}</option>
                     })}
                 </select>
             <div className="selected-items-container">
-                {chosenPlatforms.value.map(platform => {
+                {chosenPlatforms.value.map(({platform}) => {
                     return <div
+                    key={platform.name}
                     className="selected-item"
                     onClick={(e)=>removeFromChosenPlatforms(e.target.innerText)}
-                    >{platform}</div>
+                    >{platform.name}</div>
                 })}
             </div>
             <ErrorMessage

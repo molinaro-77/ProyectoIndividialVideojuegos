@@ -63,7 +63,7 @@ export default function Filtering(){
                 className='button-list'
                 name="platform" 
                 id="">
-                    {platforms.map(platform => {
+                    {platforms.map(({platform}) => {
                         return <button 
                         className='option-btn'
                         key={platform.id} 

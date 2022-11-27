@@ -1,53 +1,169 @@
 {
     "results" : [
-        {"id": 1, "name": "PlayStation 5"},
-        {"id": 2, "name": "Xbox One" },
-        {"id": 3, "name": "PlayStation 4" },
-        {"id": 4, "name": "Xbox Series S/X" },
-        {"id": 5, "name": "Nintendo Switch" },
-        {"id": 6, "name": "iOS" },
-        {"id": 7, "name": "Android" },
-        {"id": 8, "name": "Nintendo 3DS" },
-        {"id": 9, "name": "Nintendo DS" },
-        {"id": 10, "name": "Nintendo DSi" },
-        {"id": 11, "name": "macOS" },
-        {"id": 12, "name": "PC"},
-        {"id": 13, "name": "Xbox 360" },
-        {"id": 14, "name": "Xbox" },
-        {"id": 15, "name": "PlayStation 3" },
-        {"id": 16, "name": "PlayStation 2" },
-        {"id": 17, "name": "PlayStation" },
-        {"id": 18, "name": "PS Vita" },
-        {"id": 19, "name": "PSP" },
-        {"id": 20, "name": "Wii U" },
-        {"id": 21, "name": "Wii" },
-        {"id": 22, "name": "GameCube" },
-        {"id": 23, "name": "Nintendo 64" },
-        {"id": 24, "name": "Game Boy Advance" },
-        {"id": 25, "name": "Game Boy Color" },
-        {"id": 26, "name": "Game Boy" },
-        {"id": 27, "name": "SNES" },
-        {"id": 28, "name": "NES" },
-        {"id": 29, "name": "Classic Macintosh" },
-        {"id": 30, "name": "Apple II" },
-        {"id": 31, "name": "Commodore / Amiga" },
-        {"id": 32, "name": "Atari 7800" },
-        {"id": 33, "name": "Atari 5200" },
-        {"id": 34, "name": "Atari 2600" },
-        {"id": 35, "name": "Atari Flashback" },
-        {"id": 36, "name": "Atari 8-bit" },
-        {"id": 37, "name": "Atari ST" },
-        {"id": 38, "name": "Atari Lynx" },
-        {"id": 39, "name": "Atari XEGS" },
-        {"id": 40, "name": "Genesis" },
-        {"id": 41, "name": "SEGA Saturn" },
-        {"id": 42, "name": "SEGA CD" },
-        {"id": 43, "name": "SEGA 32X" },
-        {"id": 44, "name": "SEGA Master System" },
-        {"id": 45, "name": "Dreamcast" },
-        {"id": 46, "name": "3DO" },
-        {"id": 47, "name": "Jaguar" },
-        {"id": 48, "name": "Game Gear" },
-        {"id": 49, "name": "Neo Geo" }
+        {
+            "platform" : {"id": 1, "name": "PlayStation 5"}
+        },
+        {
+            "platform" :
+            {"id": 2, "name": "Xbox One" }
+        },
+        {
+            "platform" :
+            {"id": 3, "name": "PlayStation 4" }
+        },
+        
+        {
+            "platform" :
+            {"id": 4, "name": "Xbox Series S/X" }
+        },
+        {
+            "platform" :
+            {"id": 5, "name": "Nintendo Switch" }
+        },
+        {
+            "platform" :
+            {"id": 6, "name": "iOS" }
+        },
+        {
+            "platform" :
+            {"id": 7, "name": "Android" }
+        },
+        {
+            "platform" :
+            {"id": 8, "name": "Nintendo 3DS" }
+        },
+        {
+            "platform" :
+            {"id": 9, "name": "Nintendo DS" }
+        },
+        {
+            "platform" :  
+            {"id": 10, "name": "Nintendo DSi" }
+        },
+        {
+            "platform" :  
+            {"id": 11, "name": "macOS" }
+        },
+        {
+            "platform" :  
+            {"id": 12, "name": "PC"}
+        },
+        {
+            "platform" :  
+            {"id": 13, "name": "Xbox 360" }
+        },
+        {
+            "platform" :  
+            {"id": 14, "name": "Xbox" }
+        },
+        {
+            "platform" :  
+            {"id": 15, "name": "PlayStation 3" }
+        },
+        {
+            "platform" :  
+            {"id": 16, "name": "PlayStation 2" }
+        },
+        {
+            "platform" :  
+            {"id": 17, "name": "PlayStation" }
+        },
+        {
+            "platform" :  
+            {"id": 18, "name": "PS Vita" }
+        },{
+            "platform" :  
+            {"id": 19, "name": "PSP" }
+        },{
+            "platform" :  
+            {"id": 20, "name": "Wii U" }
+        },{
+            "platform" :  
+            {"id": 21, "name": "Wii" }
+        },{
+            "platform" :  
+            {"id": 22, "name": "GameCube" }
+        },{
+            "platform" :  
+            {"id": 23, "name": "Nintendo 64" }
+        },{
+            "platform" :  
+            {"id": 24, "name": "Game Boy Advance" }
+        },{
+            "platform" : 
+            {"id": 25, "name": "Game Boy Color" }
+        },{
+            "platform" :  
+            {"id": 26, "name": "Game Boy" }
+        },{
+            "platform" :  
+            {"id": 27, "name": "SNES" }
+        },{
+            "platform" :  
+            {"id": 28, "name": "NES" }
+        },{
+            "platform" : 
+            {"id": 29, "name": "Classic Macintosh" }
+        },{
+            "platform" :  
+            {"id": 30, "name": "Apple II" }
+        },{
+            "platform" :  
+            {"id": 31, "name": "Commodore / Amiga" }
+        },{
+            "platform" :  
+            {"id": 32, "name": "Atari 7800" }
+        },{
+            "platform" :  
+            {"id": 33, "name": "Atari 5200" }
+        },{
+            "platform" : 
+            {"id": 34, "name": "Atari 2600" }
+        },{
+            "platform" :  
+            {"id": 35, "name": "Atari Flashback" }
+        },{
+            "platform" :  
+            {"id": 36, "name": "Atari 8-bit" }
+        },{
+            "platform" :  
+            {"id": 37, "name": "Atari ST" }
+        },{
+            "platform" :  
+            {"id": 38, "name": "Atari Lynx" }
+        },{
+            "platform" :  
+            {"id": 39, "name": "Atari XEGS" }
+        },{
+            "platform" :  
+            {"id": 40, "name": "Genesis" }
+        },{
+            "platform" :  
+            {"id": 41, "name": "SEGA Saturn" }
+        },{
+            "platform" :  
+            {"id": 42, "name": "SEGA CD" }
+        },{
+            "platform" :  
+            {"id": 43, "name": "SEGA 32X" }
+        },{
+            "platform" :  
+            {"id": 44, "name": "SEGA Master System" }
+        },{
+            "platform" :  
+            {"id": 45, "name": "Dreamcast" }
+        },{
+            "platform" :  
+            {"id": 46, "name": "3DO" }
+        },{
+            "platform" :  
+            {"id": 47, "name": "Jaguar" }
+        },{
+            "platform" :  
+            {"id": 48, "name": "Game Gear" }
+        },{
+            "platform" :  
+            {"id": 49, "name": "Neo Geo" }
+        }
     ]
 }

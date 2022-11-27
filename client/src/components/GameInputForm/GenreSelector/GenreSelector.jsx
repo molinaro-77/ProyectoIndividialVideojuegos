@@ -29,6 +29,7 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
                 name="genres" id="">
                 {genres.map(genre => {
                     return <option 
+                    key={genre.id}
                     id={genre.id}
                     value={genre.id}
                     >{genre.name}</option>
@@ -37,8 +38,11 @@ export default function GenreSelector({chosenGenres, setChosenGenres}) {
         <div className="selected-items-container">
             {chosenGenres.value.map(genre => {
                 return <div
+                    key={genre.id}
                     className="selected-item"
-                onClick={(e)=>removeFromChosenGenres(e.target.innerText)}>{genre.name}</div>
+                    onClick={(e)=>removeFromChosenGenres(e.target.innerText)}>
+                        {genre.name}
+                    </div>
             })}
         </div>
         </div>

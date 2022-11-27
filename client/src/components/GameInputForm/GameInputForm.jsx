@@ -17,7 +17,7 @@ function GameInputForm(){
     const [releaseDate, setReleaseDate] = useState({value : '', valid : null});
     const [rating, setRating] = useState({value : 0, valid : null});
     const [chosenPlatforms, setChosenPlatforms] = useState({value : []})
-    const [chosenGenres, setChosenGenres] = useState({value : []})
+    const [chosenGenres, setChosenGenres] = useState({value : [{}]})
     const [description, setDescription] = useState({value : '', valid : null});
     
     const requiredValuesAreEmpty = (
