@@ -15,7 +15,7 @@ async function getVideogames(req, res){
         }else{
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
-            console.log(dbGames)
+            console.log("hello")
             return res.status(200).json(apiGames.concat(dbGames));
         }
     }catch(e){
@@ -68,11 +68,11 @@ async function getVideogamesFromApi(){
                 ])
         .then(([page1, page2, page3, page4, page5]) => {
             return [
-                ...page1.data.results,
-                ...page2.data.results,
-                ...page3.data.results,
-                ...page4.data.results,
-                ...page5.data.results,
+                page1.data.results,
+                page2.data.results,
+                page3.data.results,
+                page4.data.results,
+                page5.data.results,
                 ]
             })
         .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
