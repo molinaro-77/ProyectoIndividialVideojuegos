@@ -64,7 +64,7 @@ async function getVideogamesFromApi(){
     const page4 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=4`)
     const page5 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=5`)
 
-    return page1
+    return page1.data.results
     /* return Promise.all(
         [
             axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
