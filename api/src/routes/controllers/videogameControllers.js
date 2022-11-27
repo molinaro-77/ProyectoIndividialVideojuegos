@@ -60,11 +60,11 @@ function getVideogameByIDFromDB(id){
 async function getVideogamesFromApi(){
     return Promise.all(
         [
-            axios.get(API_GAMES + API_KEY_AUTH + '&page=1'),
-            axios.get(API_GAMES + API_KEY_AUTH + '&page=2'),
-            axios.get(API_GAMES + API_KEY_AUTH + '&page=3'),
-            axios.get(API_GAMES + API_KEY_AUTH + '&page=4'),
-            axios.get(API_GAMES + API_KEY_AUTH + '&page=5')
+            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
+            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=2`),
+            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=3`),
+            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=4`),
+            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=5`)
                 ])
         .then(([page1, page2, page3, page4, page5]) => {
             return [
