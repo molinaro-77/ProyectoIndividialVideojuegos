@@ -59,7 +59,7 @@ function getVideogameByIDFromDB(id){
 
 async function getVideogamesFromApi(){
     const page1 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`)
-
+    console.log(page1.data.results[0])
     return page1.data.results
     /* return Promise.all(
         [
