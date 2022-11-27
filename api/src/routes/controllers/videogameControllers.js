@@ -58,7 +58,14 @@ function getVideogameByIDFromDB(id){
 }
 
 async function getVideogamesFromApi(){
-    return Promise.all(
+    const page1 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`)
+    const page2 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=2`)
+    const page3 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=3`)
+    const page4 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=4`)
+    const page5 = await axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=5`)
+
+    return page1
+    /* return Promise.all(
         [
             axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
             axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=2`),
@@ -75,7 +82,7 @@ async function getVideogamesFromApi(){
                 page5.data.results,
                 ]
             })
-        .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
+        .catch(new Error('Algo salio mal haciendo el get a la API RAWG')); */
 }
 
 function searchGamesInApi(queryWord){
