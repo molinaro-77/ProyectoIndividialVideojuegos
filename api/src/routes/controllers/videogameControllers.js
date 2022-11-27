@@ -16,7 +16,7 @@ async function getVideogames(req, res){
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
             console.log("hello")
-            return res.status(200).json(apiGames.concat(dbGames));
+            return res.status(200).json(apiGames);
         }
     }catch(e){
         res.status(400).json({error : e.message});
@@ -59,8 +59,8 @@ function getVideogameByIDFromDB(id){
 
 async function getVideogamesFromApi(){
     const page1 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`)
-    console.log(page1.data.results[0])
-    return page1.data.results
+    console.log(page1)
+    return page1
     /* return Promise.all(
         [
             axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
