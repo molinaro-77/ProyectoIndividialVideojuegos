@@ -16,7 +16,7 @@ async function getVideogames(req, res){
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
             console.log("hello")
-            return res.status(200).json(apiGames);
+            return res.status(200).json(apiGames.concat(dbGames));
         }
     }catch(e){
         res.status(400).json({error : e.message});
