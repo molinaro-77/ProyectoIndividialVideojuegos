@@ -58,11 +58,11 @@ function getVideogameByIDFromDB(id){
 }
 
 async function getVideogamesFromApi(){
-    const page1 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`)
-    const page2 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`)
-    const page3 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`)
-    const page4 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`)
-    const page5 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`)
+    const page1 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`)
+    const page2 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`)
+    const page3 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`)
+    const page4 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`)
+    const page5 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`)
     
         console.log("axios get returned")
         console.log(page1)
