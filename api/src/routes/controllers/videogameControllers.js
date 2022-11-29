@@ -66,13 +66,38 @@ async function getVideogamesFromApi(){
                 },
             }
         );
-    const page2 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`)
-    const page3 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`)
-    const page4 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`)
-    const page5 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`)
-    
-        console.log("axios get returned")
-        console.log(page1.data)
+    const page2 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept-Encoding': 'application/json',
+                },
+            }
+        );
+    const page3 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept-Encoding': 'application/json',
+                },
+            }
+        );
+    const page4 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept-Encoding': 'application/json',
+                },
+            }
+        );
+    const page5 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept-Encoding': 'application/json',
+                },
+            }
+        );
     return [
         ...page1.data.results,
         ...page2.data.results,
