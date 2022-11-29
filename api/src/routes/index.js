@@ -13,4 +13,8 @@ router.use('/videogames', videogame);
 router.use('/genres', genres);
 router.use('/platforms', platforms);
 
+router.get('/', function (req, res) {
+    res.status(200).json({message : "nothing to see here"});
+})
+
 module.exports = router;
