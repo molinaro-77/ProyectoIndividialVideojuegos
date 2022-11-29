@@ -15,10 +15,10 @@ async function getVideogames(req, res){
         }else{
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
-            return res.status(200).json(apiGames.concat(dbGames));
+            console.log("hello")
+            return res.status(200).json(apiGames);
         }
     }catch(e){
-        console.log(e.message)
         res.status(400).json({error : e.message});
     };
 };
@@ -41,13 +41,7 @@ async function getVideogameById(req, res) {
 }
 
 function getVideogamesByIdFromApi(id){
-    return axios.get(API_GAMES + '/' + id + API_KEY_AUTH,
-    {
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept-Encoding': 'application/json',
-        },
-    })
+    return axios.get(API_GAMES + '/' + id + API_KEY_AUTH)
         .then(videogame => videogame.data)
         .catch(new Error('No se pudo encontrar el videojuego con ese id'));
 } 
@@ -64,56 +58,28 @@ function getVideogameByIDFromDB(id){
 }
 
 async function getVideogamesFromApi(){
-    const page1 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=1`);
-    const page2 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=2`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept-Encoding': 'application/json',
-                },
-            }
-        );
-    const page3 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=3`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept-Encoding': 'application/json',
-                },
-            }
-        );
-    const page4 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=4`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept-Encoding': 'application/json',
-                },
-            }
-        );
-    const page5 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=5`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept-Encoding': 'application/json',
-                },
-            }
-        );
-    return [
-        ...page1.data.results,
-        ...page2.data.results,
-        ...page3.data.results,
-        ...page4.data.results,
-        ...page5.data.results
-    ]
+    return Promise.all(
+        [
+            axios.get(`${API_GAMES}${API_KEY_AUTH}&page=1`),
+            axios.get(`${API_GAMES}${API_KEY_AUTH}&page=2`),
+            axios.get(`${API_GAMES}${API_KEY_AUTH}&page=3`),
+            axios.get(`${API_GAMES}${API_KEY_AUTH}&page=4`),
+            axios.get(`${API_GAMES}${API_KEY_AUTH}&page=5`),
+                ])
+        .then(([page1, page2, page3, page4, page5]) => {
+            return [
+                ...page1.data.results,
+                ...page2.data.results,
+                ...page3.data.results,
+                ...page4.data.results,
+                ...page5.data.results,
+                ]
+            })
+        .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
 }
 
 function searchGamesInApi(queryWord){
-    return axios.get(API_GAMES + API_KEY_AUTH + '&search=' + queryWord,
-    {
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept-Encoding': 'application/json',
-        },
-    })
+    return axios.get(API_GAMES + API_KEY_AUTH + '&search=' + queryWord)
         .then(response => response.data.results)
         .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
 }
