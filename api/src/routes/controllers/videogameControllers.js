@@ -65,7 +65,7 @@ async function getVideogamesFromApi(){
     const page5 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`)
     
         console.log("axios get returned")
-        console.log(page1)
+        console.log(page1.data)
     return [
         ...page1.data.results,
         ...page2.data.results,
