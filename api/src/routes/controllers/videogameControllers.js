@@ -16,9 +16,10 @@ async function getVideogames(req, res){
             const apiGames = await getVideogamesFromApi();
             const dbGames = await getGamesFromDB();
             console.log("hello")
-            return res.status(200).json(apiGames);
+            return res.status(200).json(apiGames.concat(dbGames));
         }
     }catch(e){
+        console.log(e.message)
         res.status(400).json({error : e.message});
     };
 };
@@ -59,8 +60,19 @@ function getVideogameByIDFromDB(id){
 
 async function getVideogamesFromApi(){
     const page1 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`)
-    console.log(page1)
-    return page1
+    const page2 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`)
+    const page3 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`)
+    const page4 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`)
+    const page5 = await axios.get(`https://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`)
+    
+        console.log("axios get returned" + page1)
+    return [
+        ...page1.data.results,
+        ...page2.data.results,
+        ...page3.data.results,
+        ...page4.data.results,
+        ...page5.data.results
+    ]
     /* return Promise.all(
         [
             axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
