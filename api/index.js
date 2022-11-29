@@ -19,6 +19,10 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const axios = require('axios');
+
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+axios.defaults.headers.common['Accept-Encoding'] = 'application/json';
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {

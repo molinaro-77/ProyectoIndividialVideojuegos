@@ -4,6 +4,8 @@ const { Genre } = require('../../db');
 const {API_GENRES , API_KEY_AUTH} = require('../../constants/constants')
 
 
+
+
 async function getGenres(req, res) {
     try {
         let genresDb = await Genre.findAll({});

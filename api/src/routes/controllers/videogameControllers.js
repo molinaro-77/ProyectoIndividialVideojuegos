@@ -41,7 +41,13 @@ async function getVideogameById(req, res) {
 }
 
 function getVideogamesByIdFromApi(id){
-    return axios.get(API_GAMES + '/' + id + API_KEY_AUTH)
+    return axios.get(API_GAMES + '/' + id + API_KEY_AUTH,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept-Encoding': 'application/json',
+        },
+    })
         .then(videogame => videogame.data)
         .catch(new Error('No se pudo encontrar el videojuego con ese id'));
 } 
@@ -58,7 +64,8 @@ function getVideogameByIDFromDB(id){
 }
 
 async function getVideogamesFromApi(){
-    const page1 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=1`,
+    const page1 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=1`);
+    const page2 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=2`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +73,7 @@ async function getVideogamesFromApi(){
                 },
             }
         );
-    const page2 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=2`,
+    const page3 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=3`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,7 +81,7 @@ async function getVideogamesFromApi(){
                 },
             }
         );
-    const page3 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=3`,
+    const page4 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=4`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,15 +89,7 @@ async function getVideogamesFromApi(){
                 },
             }
         );
-    const page4 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=4`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept-Encoding': 'application/json',
-                },
-            }
-        );
-    const page5 = await axios.get(`http://api.rawg.io/api/games?key=4ccc876ac5394c388ee1804c976ee70a&page=5`,
+    const page5 = await axios.get(`${API_GAMES}${API_KEY_AUTH}&page=5`,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,28 +104,16 @@ async function getVideogamesFromApi(){
         ...page4.data.results,
         ...page5.data.results
     ]
-    /* return Promise.all(
-        [
-            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=1`),
-            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=2`),
-            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=3`),
-            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=4`),
-            axios.get(`https://api.rawg.io/api/games?key=${process.env.API_KEY}&page=5`)
-                ])
-        .then(([page1, page2, page3, page4, page5]) => {
-            return [
-                page1.data.results,
-                page2.data.results,
-                page3.data.results,
-                page4.data.results,
-                page5.data.results,
-                ]
-            })
-        .catch(new Error('Algo salio mal haciendo el get a la API RAWG')); */
 }
 
 function searchGamesInApi(queryWord){
-    return axios.get(API_GAMES + API_KEY_AUTH + '&search=' + queryWord)
+    return axios.get(API_GAMES + API_KEY_AUTH + '&search=' + queryWord,
+    {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept-Encoding': 'application/json',
+        },
+    })
         .then(response => response.data.results)
         .catch(new Error('Algo salio mal haciendo el get a la API RAWG'));
 }
